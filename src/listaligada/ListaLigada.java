@@ -88,5 +88,18 @@ public class ListaLigada {
     return elemento;
     }
     
+    //Elimiar nodo al final de una lista 
+    public int EliminarFinal(){
+        int elemento = tail.getDato();
+        if(head == tail){
+            this.tail=null;
+            this.head=null;
+        }else{
+            Nodo temporal = head;
+            while(temporal.getSiguiente()!=tail){
+                temporal = temporal.getSiguiente();
+            }
+        }
+    }
     
 }
