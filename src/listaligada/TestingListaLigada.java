@@ -35,9 +35,9 @@ public class TestingListaLigada {
                 break;
         }
              
-            System.out.println("-----------------------------------");
-            System.out.println("Contenido de la lista ligada: ");
-            lista.printList();
+        System.out.println("-----------------------------------");
+        System.out.println("Contenido de la lista ligada: ");
+        lista.printList();
         
         System.out.println("--------------------------");
         System.out.println("Escribe el elemento a insertar: ");

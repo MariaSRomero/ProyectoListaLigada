@@ -8,7 +8,7 @@ package listaligada;
  *
  * @author Maria
  */
-public class ListaLigada {
+public class ListaLigada  {
     private Nodo head;//Apuntador a la cabecera de la lista (primer nodo)
     private Nodo tail;//Apuntador a la cola de la lista (ultimo nodo)
     private Nodo actual;//Apuntador al nodo seleccionado actualmente
@@ -30,11 +30,9 @@ public class ListaLigada {
         this.size++; // Se incrementa el tamaño de la lista
     }
     */
-
     public void add(int dato){
         Nodo nuevoNodo = new Nodo(dato);
         this.size++;
-        
         this.tail= nuevoNodo; //se mueve el apuntador al ultimo nodo
         
         if( head  == null){//La lista esta vacia, creamos el primer nodo
@@ -42,8 +40,8 @@ public class ListaLigada {
             actual = head;
         }
         else{
-            tail.setSiguiente(nuevoNodo);// actual.sig apunta al nuevoNodo (enlace entre nodos)
-            tail = nuevoNodo;// ahora actual es el nuevoNodo
+            actual.setSiguiente(nuevoNodo);// actual.sig apunta al nuevoNodo (enlace entre nodos)
+            actual = nuevoNodo;// ahora actual es el nuevoNodo
         }
         
         
@@ -77,43 +75,42 @@ public class ListaLigada {
         }
     }
     
-    //Eliminar un nodo del inicio 
-    
-    //Se declara un entero y el IF es para casos en los que haya un solo nodo 
+    //Método para eliminar un nodo del inicio
     public int EliminarInicio(){
-    int elemento = head.getDato(); 
-    if(head == tail){
-        this.head=null;
-        this.tail=null;
-    }else{
-        head=head.getSiguiente();
-    }
-    return elemento;
-    }
-    
-    //Elimiar nodo al final de una lista 
-    //El nodo temporal es para que recorra toda la lista
-    
-    public int EliminarFinal(){
-        int elemento = tail.getDato();
-        if(head == tail){
-            this.tail=null;
+        int elemento = head.getDato();//Declaro un entero 
+        if(head == tail){ // este if es solo en caso de que haya un solo nodo
             this.head=null;
+            this.tail=null;
         }else{
-            Nodo temporal = head;
-            while(temporal.getSiguiente()!=tail){
-                temporal = temporal.getSiguiente();
-            }
-            //Se guarda el nodo sigueinte al nodo a eliminar
-            Nodo siguiente = temporal.getSiguiente().getSiguiente();
-            //Elimina el nodo apuntando al siguiente 
-            temporal.setSiguiente(siguiente);
+            head=head.getSiguiente(); // Aqui es cuando ya son dos o mas nodos
         }
         return elemento;
     }
     
-    //Eliminar un nodo en especifico
-        public void eliminarUnoEspecifico(int elemento){
+    
+    //Metodo para eliminar un nodo que esta al final de una lista
+    public int EliminarFinal(){
+        int elemento = tail.getDato();
+        if(head == tail){
+            this.tail=null;
+            this.head = null;
+        }else{
+            Nodo temporal = head; // este nodo temporal sirve para recorrer toda la lista
+            while(temporal.getSiguiente()!= tail){ //se recorre toda la lista hasta el penultimo elemento
+                temporal = temporal.getSiguiente();
+            }
+            //Guarda el nodo siguiente al nodo a eliminar
+            Nodo siguiente = temporal.getSiguiente().getSiguiente();
+            //Elimina la referencia del nodo apuntando al siguiente
+            temporal.setSiguiente(siguiente);
+            
+            
+        }
+        return elemento;
+    }
+    
+    //Metodo para eliminar un nodo en especifico
+    public void eliminarUnoEspecifico(int elemento){
         if (head == tail && elemento==head.getDato()){
             this.head = null;
             this.tail = null;
@@ -128,27 +125,29 @@ public class ListaLigada {
                 anterior=anterior.getSiguiente();
                 temporal = temporal.getSiguiente();
             }
-            if(temporal!=null){ // Se que encontro el elemento y no llegó a null
+            if(temporal!=null){ // Quiere decir que encontro el elemento y no llego a null
                 anterior.setSiguiente(temporal.getSiguiente());
                 if(temporal == tail ){
-                    tail = anterior; //Solo si llegó hasta el ultimo nodo quiere decir que ese es el que se va a eliminar entonces se mueve tail al anterior
+                    tail = anterior; //si temporal llego hasta el ultimo nodo quiere decir que ese es el que se va a eliminar entonces se mueve tail al anterior
                 }
                 
             }
         }
     }
-        
-        //Contar los nodos 
-        public int contarNodos(){
-            return size;
+    
+    // Metodo para contar los nodos
+    public int contarNodos(){
+       return size; 
+    }
+    
+    
+    //Metodo para buscar un elemento
+    public boolean Busqueda(int elemento){
+        Nodo temporal = head;
+        while(temporal !=null && temporal.getDato()!=elemento){
+            temporal=temporal.getSiguiente();
         }
- 
-        //Buscar un elemento
-       public boolean Busqueda(int elemento){
-           Nodo temporal = head;
-           while(temporal !=null && temporal.getDato()!=elemento){
-               temporal=temporal.getSiguiente();
-           }
-           return temporal!=null;
-       }
+        return temporal!=null;
+    }
 }
+        
