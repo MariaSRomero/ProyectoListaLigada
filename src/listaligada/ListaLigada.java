@@ -140,4 +140,12 @@ public class ListaLigada {
             return size;
         }
  
+        //Buscar un elemento
+        public boolean Buscar(int elemento){
+            Nodo temporal = head;
+            while(temporal !=null && temporal.getDato()!=elemento){
+                temporal=temporal.getSiguiente();
+            }
+            return temporal !=null;
+        }
 }
