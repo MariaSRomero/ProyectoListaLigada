@@ -50,12 +50,12 @@ public class TestingListaLigada {
         lista.add(dato, p);
         
         System.out.println("--------------------------");
-        System.out.println("Eliminando un elemento del inicio de la lista");
+        System.out.println("Se esta eliminando un elemento del inicio de la lista");
         dato = lista.EliminarInicio();
         System.out.println("El elemento eliminado es: " + dato);
         
         System.out.println("--------------------------");
-        System.out.println("Eliminando un elemento del final de la lista");
+        System.out.println("Se esta eliminando un elemento del final de la lista");
         dato = lista.EliminarFinal();
         System.out.println("El elemento eliminado es: " + dato);
         
