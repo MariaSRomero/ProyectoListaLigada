@@ -34,9 +34,7 @@ public class TestingListaLigada {
             if(respuesta == 'n' || respuesta == 'N')
                 break;
         }
-            
-           
-            
+             
             System.out.println("-----------------------------------");
             System.out.println("Contenido de la lista ligada: ");
             lista.printList();

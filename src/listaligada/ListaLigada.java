@@ -74,6 +74,19 @@ public class ListaLigada {
         }
     }
     
+    //Eliminar un nodo del inicio 
+    
+    //Se declara un entero y el IF es para casos en los que haya un solo nodo 
+    public int EliminarInicio(){
+    int elemento = head.getDato(); 
+    if(head == tail){
+        this.head=null;
+        this.tail=null;
+    }else{
+        head=head.getSiguiente();
+    }
+    return elemento;
+    }
     
     
 }
