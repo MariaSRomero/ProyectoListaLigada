@@ -30,9 +30,11 @@ public class ListaLigada {
         this.size++; // Se incrementa el tamaño de la lista
     }
     */
+
     public void add(int dato){
         Nodo nuevoNodo = new Nodo(dato);
         this.size++;
+        
         this.tail= nuevoNodo; //se mueve el apuntador al ultimo nodo
         
         if( head  == null){//La lista esta vacia, creamos el primer nodo
@@ -40,8 +42,8 @@ public class ListaLigada {
             actual = head;
         }
         else{
-            actual.setSiguiente(nuevoNodo);// actual.sig apunta al nuevoNodo (enlace entre nodos)
-            actual = nuevoNodo;// ahora actual es el nuevoNodo
+            tail.setSiguiente(nuevoNodo);// actual.sig apunta al nuevoNodo (enlace entre nodos)
+            tail = nuevoNodo;// ahora actual es el nuevoNodo
         }
         
         
@@ -50,6 +52,7 @@ public class ListaLigada {
     
     public void add(int dato, int posicion){
         Nodo nuevoNodo = new Nodo(dato);
+        this.size ++;
         int i = 1;
         actual = head;
         while(i<posicion -1){
@@ -141,11 +144,11 @@ public class ListaLigada {
         }
  
         //Buscar un elemento
-        public boolean Buscar(int elemento){
-            Nodo temporal = head;
-            while(temporal !=null && temporal.getDato()!=elemento){
-                temporal=temporal.getSiguiente();
-            }
-            return temporal !=null;
-        }
+       public boolean Busqueda(int elemento){
+           Nodo temporal = head;
+           while(temporal !=null && temporal.getDato()!=elemento){
+               temporal=temporal.getSiguiente();
+           }
+           return temporal!=null;
+       }
 }
