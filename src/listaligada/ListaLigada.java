@@ -89,6 +89,7 @@ public class ListaLigada {
     }
     
     //Elimiar nodo al final de una lista 
+    //El nodo temporal es para que recorra toda la lista
     public int EliminarFinal(){
         int elemento = tail.getDato();
         if(head == tail){
@@ -99,7 +100,10 @@ public class ListaLigada {
             while(temporal.getSiguiente()!=tail){
                 temporal = temporal.getSiguiente();
             }
+            Nodo siguiente = temporal.getSiguiente().getSiguiente();
+            temporal.setSiguiente(siguiente);
         }
+        return elemento;
     }
     
 }
